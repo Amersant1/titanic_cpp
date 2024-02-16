@@ -1,0 +1,8 @@
+//
+// Created by Сергей on 16.02.2024.
+//
+
+#ifndef PROJECT_TITANIC_TITANIC_H
+#define PROJECT_TITANIC_TITANIC_H
+
+#endif //PROJECT_TITANIC_TITANIC_H
