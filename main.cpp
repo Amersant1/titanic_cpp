@@ -15,7 +15,7 @@ int main(){
     for(int i:{COLUMNS::Sex,COLUMNS::Pclass,COLUMNS::Age}){
         fillNan(needed_matrix,i);
     }
-
+    fillValue(needed_matrix);
     printMatrix(needed_matrix);
 
     return 0;
