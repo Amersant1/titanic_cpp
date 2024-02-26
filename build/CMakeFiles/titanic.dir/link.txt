@@ -1,1 +1,1 @@
-/usr/bin/clang++ -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/titanic.dir/main.cpp.o CMakeFiles/titanic.dir/titanic.cpp.o -o titanic 
+/usr/bin/clang++ -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/titanic.dir/src/main.cpp.o CMakeFiles/titanic.dir/src/titanic.cpp.o -o titanic 

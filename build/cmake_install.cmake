@@ -1,4 +1,4 @@
-# Install script for directory: /Users/mike_napolov/Titanic project/titanic_cpp
+# Install script for directory: /Users/nikitapodlednev/Desktop/titanic_cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/mike_napolov/Titanic project/titanic_cpp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/nikitapodlednev/Desktop/titanic_cpp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

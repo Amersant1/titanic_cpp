@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/mike_napolov/Titanic project/titanic_cpp"
+CMAKE_SOURCE_DIR = /Users/nikitapodlednev/Desktop/titanic_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/mike_napolov/Titanic project/titanic_cpp/build"
+CMAKE_BINARY_DIR = /Users/nikitapodlednev/Desktop/titanic_cpp/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles" "/Users/mike_napolov/Titanic project/titanic_cpp/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles /Users/nikitapodlednev/Desktop/titanic_cpp/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,53 +129,53 @@ titanic/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/build
 .PHONY : titanic/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-titanic.o: titanic.cpp.o
-.PHONY : titanic.o
+src/titanic.o: src/titanic.cpp.o
+.PHONY : src/titanic.o
 
 # target to build an object file
-titanic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/titanic.cpp.o
-.PHONY : titanic.cpp.o
+src/titanic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/titanic.cpp.o
+.PHONY : src/titanic.cpp.o
 
-titanic.i: titanic.cpp.i
-.PHONY : titanic.i
+src/titanic.i: src/titanic.cpp.i
+.PHONY : src/titanic.i
 
 # target to preprocess a source file
-titanic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/titanic.cpp.i
-.PHONY : titanic.cpp.i
+src/titanic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/titanic.cpp.i
+.PHONY : src/titanic.cpp.i
 
-titanic.s: titanic.cpp.s
-.PHONY : titanic.s
+src/titanic.s: src/titanic.cpp.s
+.PHONY : src/titanic.s
 
 # target to generate assembly for a file
-titanic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/titanic.cpp.s
-.PHONY : titanic.cpp.s
+src/titanic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/titanic.dir/build.make CMakeFiles/titanic.dir/src/titanic.cpp.s
+.PHONY : src/titanic.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... titanic"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... titanic.o"
-	@echo "... titanic.i"
-	@echo "... titanic.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/titanic.o"
+	@echo "... src/titanic.i"
+	@echo "... src/titanic.s"
 .PHONY : help
 
 

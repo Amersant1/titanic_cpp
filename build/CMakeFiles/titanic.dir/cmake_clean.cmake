@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/titanic.dir/main.cpp.o"
-  "CMakeFiles/titanic.dir/main.cpp.o.d"
-  "CMakeFiles/titanic.dir/titanic.cpp.o"
-  "CMakeFiles/titanic.dir/titanic.cpp.o.d"
+  "CMakeFiles/titanic.dir/src/main.cpp.o"
+  "CMakeFiles/titanic.dir/src/main.cpp.o.d"
+  "CMakeFiles/titanic.dir/src/titanic.cpp.o"
+  "CMakeFiles/titanic.dir/src/titanic.cpp.o.d"
   "titanic"
   "titanic.pdb"
 )

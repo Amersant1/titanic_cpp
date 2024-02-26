@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/mike_napolov/Titanic project/titanic_cpp"
+CMAKE_SOURCE_DIR = /Users/nikitapodlednev/Desktop/titanic_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/mike_napolov/Titanic project/titanic_cpp/build"
+CMAKE_BINARY_DIR = /Users/nikitapodlednev/Desktop/titanic_cpp/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/titanic.dir/depend.make
@@ -69,47 +69,47 @@ include CMakeFiles/titanic.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/titanic.dir/flags.make
 
-CMakeFiles/titanic.dir/main.cpp.o: CMakeFiles/titanic.dir/flags.make
-CMakeFiles/titanic.dir/main.cpp.o: /Users/mike_napolov/Titanic\ project/titanic_cpp/main.cpp
-CMakeFiles/titanic.dir/main.cpp.o: CMakeFiles/titanic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/titanic.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/titanic.dir/main.cpp.o -MF CMakeFiles/titanic.dir/main.cpp.o.d -o CMakeFiles/titanic.dir/main.cpp.o -c "/Users/mike_napolov/Titanic project/titanic_cpp/main.cpp"
+CMakeFiles/titanic.dir/src/main.cpp.o: CMakeFiles/titanic.dir/flags.make
+CMakeFiles/titanic.dir/src/main.cpp.o: /Users/nikitapodlednev/Desktop/titanic_cpp/src/main.cpp
+CMakeFiles/titanic.dir/src/main.cpp.o: CMakeFiles/titanic.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/titanic.dir/src/main.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/titanic.dir/src/main.cpp.o -MF CMakeFiles/titanic.dir/src/main.cpp.o.d -o CMakeFiles/titanic.dir/src/main.cpp.o -c /Users/nikitapodlednev/Desktop/titanic_cpp/src/main.cpp
 
-CMakeFiles/titanic.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/titanic.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/mike_napolov/Titanic project/titanic_cpp/main.cpp" > CMakeFiles/titanic.dir/main.cpp.i
+CMakeFiles/titanic.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/titanic.dir/src/main.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nikitapodlednev/Desktop/titanic_cpp/src/main.cpp > CMakeFiles/titanic.dir/src/main.cpp.i
 
-CMakeFiles/titanic.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/titanic.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/mike_napolov/Titanic project/titanic_cpp/main.cpp" -o CMakeFiles/titanic.dir/main.cpp.s
+CMakeFiles/titanic.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/titanic.dir/src/main.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nikitapodlednev/Desktop/titanic_cpp/src/main.cpp -o CMakeFiles/titanic.dir/src/main.cpp.s
 
-CMakeFiles/titanic.dir/titanic.cpp.o: CMakeFiles/titanic.dir/flags.make
-CMakeFiles/titanic.dir/titanic.cpp.o: /Users/mike_napolov/Titanic\ project/titanic_cpp/titanic.cpp
-CMakeFiles/titanic.dir/titanic.cpp.o: CMakeFiles/titanic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/titanic.dir/titanic.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/titanic.dir/titanic.cpp.o -MF CMakeFiles/titanic.dir/titanic.cpp.o.d -o CMakeFiles/titanic.dir/titanic.cpp.o -c "/Users/mike_napolov/Titanic project/titanic_cpp/titanic.cpp"
+CMakeFiles/titanic.dir/src/titanic.cpp.o: CMakeFiles/titanic.dir/flags.make
+CMakeFiles/titanic.dir/src/titanic.cpp.o: /Users/nikitapodlednev/Desktop/titanic_cpp/src/titanic.cpp
+CMakeFiles/titanic.dir/src/titanic.cpp.o: CMakeFiles/titanic.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/titanic.dir/src/titanic.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/titanic.dir/src/titanic.cpp.o -MF CMakeFiles/titanic.dir/src/titanic.cpp.o.d -o CMakeFiles/titanic.dir/src/titanic.cpp.o -c /Users/nikitapodlednev/Desktop/titanic_cpp/src/titanic.cpp
 
-CMakeFiles/titanic.dir/titanic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/titanic.dir/titanic.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/mike_napolov/Titanic project/titanic_cpp/titanic.cpp" > CMakeFiles/titanic.dir/titanic.cpp.i
+CMakeFiles/titanic.dir/src/titanic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/titanic.dir/src/titanic.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nikitapodlednev/Desktop/titanic_cpp/src/titanic.cpp > CMakeFiles/titanic.dir/src/titanic.cpp.i
 
-CMakeFiles/titanic.dir/titanic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/titanic.dir/titanic.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/mike_napolov/Titanic project/titanic_cpp/titanic.cpp" -o CMakeFiles/titanic.dir/titanic.cpp.s
+CMakeFiles/titanic.dir/src/titanic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/titanic.dir/src/titanic.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nikitapodlednev/Desktop/titanic_cpp/src/titanic.cpp -o CMakeFiles/titanic.dir/src/titanic.cpp.s
 
 # Object files for target titanic
 titanic_OBJECTS = \
-"CMakeFiles/titanic.dir/main.cpp.o" \
-"CMakeFiles/titanic.dir/titanic.cpp.o"
+"CMakeFiles/titanic.dir/src/main.cpp.o" \
+"CMakeFiles/titanic.dir/src/titanic.cpp.o"
 
 # External object files for target titanic
 titanic_EXTERNAL_OBJECTS =
 
-titanic: CMakeFiles/titanic.dir/main.cpp.o
-titanic: CMakeFiles/titanic.dir/titanic.cpp.o
+titanic: CMakeFiles/titanic.dir/src/main.cpp.o
+titanic: CMakeFiles/titanic.dir/src/titanic.cpp.o
 titanic: CMakeFiles/titanic.dir/build.make
 titanic: CMakeFiles/titanic.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable titanic"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable titanic"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/titanic.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/titanic.dir/clean:
 .PHONY : CMakeFiles/titanic.dir/clean
 
 CMakeFiles/titanic.dir/depend:
-	cd "/Users/mike_napolov/Titanic project/titanic_cpp/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/mike_napolov/Titanic project/titanic_cpp" "/Users/mike_napolov/Titanic project/titanic_cpp" "/Users/mike_napolov/Titanic project/titanic_cpp/build" "/Users/mike_napolov/Titanic project/titanic_cpp/build" "/Users/mike_napolov/Titanic project/titanic_cpp/build/CMakeFiles/titanic.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd /Users/nikitapodlednev/Desktop/titanic_cpp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nikitapodlednev/Desktop/titanic_cpp /Users/nikitapodlednev/Desktop/titanic_cpp /Users/nikitapodlednev/Desktop/titanic_cpp/build /Users/nikitapodlednev/Desktop/titanic_cpp/build /Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles/titanic.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/titanic.dir/depend
 

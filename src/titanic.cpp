@@ -1,14 +1,10 @@
 //
 // Created by Сергей on 16.02.2024.
 //
-#include <vector>
-#include <string>
-#include <iostream>
+#include "titanic.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-enum COLUMNS{PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked};
-typedef std::vector<std::vector<std::string>> matrix;
 double WEIGHTS[3] = {0.5, 0.25, 0.25};
 
 matrix getMatrix(const std::string &filePath)
@@ -108,3 +104,38 @@ void fillValue(matrix& matrixTitanic){
     }
     
 }
+
+
+std::ostream& operator << (std::ostream& stream, const Passenger& p) {
+    stream << p.id << '\t' << p.name << '\t' <<p.value << '\n'; 
+    return stream;
+}
+
+
+
+void Passenger::philValue() {
+    value = judge(age, sex=="female"?1:0, pClass);
+}
+
+
+boats getBoats (const matrix& titanicMatrix) {
+    boats bVector;
+    std::vector <Passenger> passengers;
+    for (size_t i=1; i < titanicMatrix.size(); i++) {
+        Passenger Ivan = {
+            std::stoul(titanicMatrix[i][COLUMNS::PassengerId]),
+            titanicMatrix[i][COLUMNS::Name],
+            std::stoul(titanicMatrix[i][COLUMNS::Age]),
+            titanicMatrix[i][COLUMNS::Sex],
+            std::stoul(titanicMatrix[i][COLUMNS::Pclass])
+        };
+        Ivan.philValue();
+        passengers.push_back(Ivan);
+    }
+    for (const Passenger& p: passengers) {
+        std::cout << p; 
+    }
+    return bVector;
+}
+
+

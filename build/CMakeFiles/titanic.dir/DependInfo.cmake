@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/mike_napolov/Titanic project/titanic_cpp/main.cpp" "CMakeFiles/titanic.dir/main.cpp.o" "gcc" "CMakeFiles/titanic.dir/main.cpp.o.d"
-  "/Users/mike_napolov/Titanic project/titanic_cpp/titanic.cpp" "CMakeFiles/titanic.dir/titanic.cpp.o" "gcc" "CMakeFiles/titanic.dir/titanic.cpp.o.d"
+  "/Users/nikitapodlednev/Desktop/titanic_cpp/src/main.cpp" "CMakeFiles/titanic.dir/src/main.cpp.o" "gcc" "CMakeFiles/titanic.dir/src/main.cpp.o.d"
+  "/Users/nikitapodlednev/Desktop/titanic_cpp/src/titanic.cpp" "CMakeFiles/titanic.dir/src/titanic.cpp.o" "gcc" "CMakeFiles/titanic.dir/src/titanic.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

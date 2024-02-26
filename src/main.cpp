@@ -4,7 +4,6 @@
 #include "titanic.h"
 #include <map>
 std::string PATH="../data/tit_csv.txt";
-enum COLUMNS{PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked};
 
 
 
@@ -16,7 +15,8 @@ int main(){
         fillNan(needed_matrix,i);
     }
     fillValue(needed_matrix);
-    printMatrix(needed_matrix);
+    //printMatrix(needed_matrix);
+    getBoats(needed_matrix);
 
     return 0;
 }
