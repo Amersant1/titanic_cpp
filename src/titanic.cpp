@@ -121,6 +121,7 @@ boats getBoats(const matrix &titanicMatrix) {
 }
 
 
+
 personObesity personObesity::operator+(const personObesity &x) const {
     personObesity newpersonObesity{sex, age, weight + x.weight};
     return newpersonObesity;
