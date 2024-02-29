@@ -2,9 +2,6 @@
 // Created by Сергей on 16.02.2024.
 //
 #include "titanic.h"
-#include <fstream>
-#include <sstream>
-#include <algorithm>
 double WEIGHTS[3] = {0.5, 0.25, 0.25};
 
 matrix getMatrix(const std::string &filePath)
@@ -66,7 +63,7 @@ void fillNan(matrix &matrixTitanic, int column)
     {
         std::vector<double> newColumnVec(columnaVec.size());
         std::transform(columnaVec.begin(), columnaVec.end(), newColumnVec.begin(), [](const std::string &x)
-                       { return std::stod(x); });
+        { return std::stod(x); });
         std::sort(newColumnVec.begin(), newColumnVec.end());
         middleValue = std::to_string(newColumnVec[newColumnVec.size() / 2]);
     }
@@ -102,12 +99,12 @@ void fillValue(matrix& matrixTitanic){
         int age =std::stoi(matrixTitanic[i][COLUMNS::Age]), gender=(matrixTitanic[i][COLUMNS::Sex]=="female"?1:0), pClass=std::stoi(matrixTitanic[i][COLUMNS::Pclass]);
         matrixTitanic[i].push_back(std::to_string(judge(age, gender,pClass)));
     }
-    
+
 }
 
 
 std::ostream& operator << (std::ostream& stream, const Passenger& p) {
-    stream << p.id << '\t' << p.name << '\t' <<p.value << '\n'; 
+    stream << p.id << '\t' << p.name << '\t' <<p.value << '\n';
     return stream;
 }
 
@@ -123,19 +120,112 @@ boats getBoats (const matrix& titanicMatrix) {
     std::vector <Passenger> passengers;
     for (size_t i=1; i < titanicMatrix.size(); i++) {
         Passenger Ivan = {
-            std::stoul(titanicMatrix[i][COLUMNS::PassengerId]),
-            titanicMatrix[i][COLUMNS::Name],
-            std::stoul(titanicMatrix[i][COLUMNS::Age]),
-            titanicMatrix[i][COLUMNS::Sex],
-            std::stoul(titanicMatrix[i][COLUMNS::Pclass])
+                std::stoul(titanicMatrix[i][COLUMNS::PassengerId]),
+                titanicMatrix[i][COLUMNS::Name],
+                std::stoul(titanicMatrix[i][COLUMNS::Age]),
+                titanicMatrix[i][COLUMNS::Sex],
+                std::stoul(titanicMatrix[i][COLUMNS::Pclass])
         };
         Ivan.philValue();
         passengers.push_back(Ivan);
     }
     for (const Passenger& p: passengers) {
-        std::cout << p; 
+        std::cout << p;
     }
     return bVector;
 }
 
 
+personObesity personObesity::operator+(const personObesity& x) const {
+    personObesity newpersonObesity {sex, age, weight+x.weight};
+    return newpersonObesity;
+}
+
+std::map<size_t, double> processObesityData(const std::vector<personObesity>& data) {
+    std::map<size_t, double> resultMap;
+
+    for (size_t i = 0; i < 100; i++) {
+        std::vector<personObesity> tempData;
+        std::copy_if(data.begin(), data.end(), std::back_inserter(tempData), [i](const personObesity& x){ return x.age == i; });
+
+        if (tempData.empty()) {
+            resultMap.insert({i, 70}); // это если в файле нет ничего (можно допилить и выставить среднее)
+        } else {
+            personObesity sumOfWeights = std::reduce(tempData.begin(), tempData.end());
+            resultMap.insert({i, ((sumOfWeights.weight  * 0.8) / tempData.size()) + (rand()%5)* pow(-1, rand())}); // *0.8 тк дата сет с obesity а норм люди меньше весят
+        }
+        tempData.clear();
+    }
+
+    return resultMap;
+}
+
+obesityMapOfMaps workWithObesity(const std::string& filePath) {
+    std::ifstream inputfile(filePath);
+    if(!inputfile) {
+        std::cout << "ПРОВЕРЬТЕ ФАЙЛ";
+        obesityMapOfMaps map{{"Man",{}}, {"!Man",{}}};
+        return map;
+    }
+
+    std::string line;
+    std::vector<personObesity> vectorWomen, vectorMen;
+
+    while(std::getline(inputfile, line)) {
+        std::stringstream ss (line);
+        std::string oneCellFromFile;
+        std::vector <std::string> tokens;
+        personObesity exectPerson;
+        for (size_t i = 0; i < 4; ++i) {
+            std::getline(ss, oneCellFromFile, ',');
+            try {
+                if (i == 0) {
+                    exectPerson.sex = oneCellFromFile;
+                } else if (i == 1) {
+                    exectPerson.age = std::stoul(oneCellFromFile);
+                } else if (i == 2) {
+                    exectPerson.weight = std::stod(oneCellFromFile);
+                }
+            }
+            catch (...) {}
+        }
+
+        if (exectPerson.sex == "!Man")
+            vectorWomen.push_back(exectPerson);
+        else
+            vectorMen.push_back(exectPerson);
+    }
+
+    std::map<size_t, double> tempMapMan= processObesityData(vectorMen);
+    std::map<size_t, double> tempMapWomen = processObesityData(vectorWomen);
+
+    obesityMapOfMaps map {{"Man", tempMapMan}, {"!Man", tempMapWomen}};
+    for (auto x : map){
+        for (auto y : x.second) {
+            std::cout << y.first << ':' << y.second << std::endl;
+        }
+
+        std::cout << '\n';
+    }
+    return map;
+}
+
+void phillWeights(matrix& matrix, const obesityMapOfMaps& map){
+    matrix[0].push_back("Weight");
+    for(size_t i = 1; i < matrix.size(); i++) {
+        try {
+            size_t age = std::stoi(matrix[i][COLUMNS::Age]);
+            std::string sex = (matrix[i][COLUMNS::Sex] == "male" ? "Man" : "!Man");
+            std::map<std::string, std::map<size_t, double>>::const_iterator it = map.find(sex);
+
+            if (it != map.end()) {
+                const auto& ageMap = it->second;
+                auto it2 = ageMap.find(age);
+                if (it2 != ageMap.end()) {
+                    double weight = it2->second;
+                    matrix[i].push_back(std::to_string(weight));
+                }
+            }
+        } catch(...) {}
+    }
+}
