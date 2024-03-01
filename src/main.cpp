@@ -13,7 +13,6 @@ int main() {
     fillValue(needed_matrix);
     getBoats(needed_matrix);
     obesityMapOfMaps map = workWithObesity("../data/obesity.csv");
-    std::cout << "DONE with workWithObesity\n";
     phillWeights(needed_matrix, map);
     printMatrix(needed_matrix);
     getCol(needed_matrix, COLUMNS::Weight);

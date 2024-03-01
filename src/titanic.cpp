@@ -10,14 +10,12 @@ matrix getMatrix(const std::string &filePath) {
     matrix titanicMatrix;
     if (!input) {
         std::cout << "ERROR";
-
         return titanicMatrix;
     }
     std::string line;
     //    std::vector
 
     while (std::getline(input, line)) {
-        //      std::cout<<line;
         std::stringstream ss(line);
         std::vector<std::string> row;
         std::string field;
@@ -42,7 +40,7 @@ void fillNan(matrix &matrixTitanic, int column) {
     for (int i = 1; i < matrixTitanic.size(); i++) {
         std::string cell = matrixTitanic[i][column];
         if (!cell.empty()) {
-            columnaVec.push_back(cell); // работает для строк, поэтому сортировка работает некорректно
+            columnaVec.push_back(cell);
         }
     }
     std::string middleValue;
@@ -79,6 +77,7 @@ double judge(int age, int gender, int pClass) {
 }
 
 void fillValue(matrix &matrixTitanic) {
+    matrixTitanic[0].push_back("Value");
     for (size_t i = 1; i < matrixTitanic.size(); i++) {
         int age = std::stoi(matrixTitanic[i][COLUMNS::Age]), gender = (matrixTitanic[i][COLUMNS::Sex] == "female" ? 1
                                                                                                                   : 0), pClass = std::stoi(
@@ -114,9 +113,6 @@ boats getBoats(const matrix &titanicMatrix) {
         Ivan.philValue();
         passengers.push_back(Ivan);
     }
-    for (const Passenger &p: passengers) {
-        std::cout << p;
-    }
     return bVector;
 }
 
@@ -148,7 +144,7 @@ obesityMapOfMaps workWithObesity(const std::string &filePath) {
     std::ifstream inputfile(filePath);
     if (!inputfile) {
         std::cout << "ПРОВЕРЬТЕ ФАЙЛ";
-        obesityMapOfMaps map{{"Man",  {}},
+        obesityMapOfMaps map{{"Man",    {}},
                              {"Female", {}}};
         return map;
     }
@@ -186,16 +182,16 @@ obesityMapOfMaps workWithObesity(const std::string &filePath) {
     }
     std::map<size_t, double> tempMapMan = processObesityData(vectorMen);
     std::map<size_t, double> tempMapWomen = processObesityData(vectorWomen);
-    obesityMapOfMaps map{{"Man",  tempMapMan},
+    obesityMapOfMaps map{{"Man",    tempMapMan},
                          {"Female", tempMapWomen}};
 
 
-    for (const auto &x: map) {
-        for (const auto &y: x.second) {
-            std::cout << y.first << ':' << y.second << std::endl;
-        }
-        std::cout << '\n';
-    }
+//    for (const auto &x: map) {
+//        for (const auto &y: x.second) {
+//            std::cout << y.first << ':' << y.second << std::endl;
+//        }
+//        std::cout << '\n';
+//    }
     return map;
 }
 
@@ -204,7 +200,7 @@ double genRand(double weight) {
 //    10 -> 5 min weight
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(-weight*0.5, weight);
+    std::uniform_real_distribution<double> dist(-weight * 0.5, weight);
     return weight + dist(mt);
 }
 
@@ -227,7 +223,7 @@ void phillWeights(matrix &matrix, const obesityMapOfMaps &map) {
 
             std::map<size_t, double>::const_iterator ageWeightLower = ageWeight.lower_bound(age);
             double ageWeightVar = ageWeightLower->second;
-            if (ageWeightLower == ageWeight.end()){
+            if (ageWeightLower == ageWeight.end()) {
                 ageWeightVar = (--ageWeight.upper_bound(age))->second;
 
             }
@@ -239,12 +235,20 @@ void phillWeights(matrix &matrix, const obesityMapOfMaps &map) {
 //template <class T>
 //std::vector<T>
 
-std::vector<int64_t> getCol(matrix &matrix, int col){
+std::vector<int64_t> getCol(matrix &matrix, int col) {
     std::vector<int64_t> newColVector;
     for (size_t i = 1; i < matrix.size(); i++) {
 
-        std::cout << "done = "<<matrix[i][col] <<i <<"=i ; col = "<<col <<" - "<<(i==COLUMNS::Value?  std::stod(matrix[i][col])*100: std::stod(matrix[i][col]));
-        newColVector.push_back(static_cast<int>(i==COLUMNS::Value?  std::stod(matrix[i][col])*100: std::stod(matrix[i][col])));
+        if (matrix[i][col].empty())
+            newColVector.push_back(0);
+        else{
+//            std::cout << "done = " << matrix[i][0] << "; " << i << "=i ; col = " << col << " - "
+//                      << (i == COLUMNS::Value ? std::stod(matrix[i][col]) * 100 : std::stod(matrix[i][col])) << '\n';
+            newColVector.push_back(
+                    static_cast<int>(i == COLUMNS::Value ? std::stod(matrix[i][col]) * 100 : std::stod(
+                            matrix[i][col])));
+        }
+
     }
     return newColVector;
 }

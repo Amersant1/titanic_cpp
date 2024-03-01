@@ -3,22 +3,19 @@
 //
 #include "ortools/algorithms/knapsack_solver.h"
 #include "titanic.h"
-
 namespace operations_research {
-    void RunKnapsackExample(const matrix& matrix) {
+    void RunKnapsackExample(matrix& matrix) {
         // Instantiate the solver.
         KnapsackSolver solver(
                 KnapsackSolver::KNAPSACK_MULTIDIMENSION_BRANCH_AND_BOUND_SOLVER,
                 "KnapsackExample");
+        std::vector<int64_t> ortoolsValues = getCol(matrix, COLUMNS::Value);
 
-        std::vector<int64_t> values = {};
+        std::vector<int64_t> values = ortoolsValues;
 
-        std::vector<std::vector<int64_t>> weights = {
-                {7,  0,  30, 22, 80, 94, 11, 81, 70, 64, 59, 18, 0,  36, 3,  8,  15,
-                 42, 9,  0,  42, 47, 52, 32, 26, 48, 55, 6,  29, 84, 2,  4,  18, 56,
-                 7,  29, 93, 44, 71, 3,  86, 66, 31, 65, 0,  79, 20, 65, 52, 13}};
+        std::vector<std::vector<int64_t>> weights = {getCol(matrix, COLUMNS::Weight)};
 
-        std::vector<int64_t> capacities = {850};
+        std::vector<int64_t> capacities = {1000};
 
         solver.Init(values, weights, capacities);
         int64_t computed_value = solver.Solve();
