@@ -32,7 +32,7 @@ struct Passenger {
 };
 
 typedef std::vector<std::vector<std::string>> matrix;
-// новый тип данных:
+// новый тип данных
 typedef std::map<std::string, std::map<size_t, double>> obesityMapOfMaps;
 typedef std::vector<std::vector<Passenger>> boats;
 
