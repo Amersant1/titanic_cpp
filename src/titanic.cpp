@@ -134,16 +134,13 @@ std::map<size_t, double> processObesityData(const std::vector<personObesity> &da
         std::copy_if(data.begin(), data.end(), std::back_inserter(tempData),
                      [i](const personObesity &x) { return x.age == i; });
 
-        if (tempData.empty()) {
-            resultMap.insert({i, 70}); // это если в файле нет ничего (можно допилить и выставить среднее)
-        } else {
+        if (!tempData.empty()) {
+//            resultMap.insert({i, 70}); // это если в файле нет ничего (можно допилить и выставить среднее)
+//        } else {
             personObesity sumOfWeights = std::reduce(tempData.begin(), tempData.end());
-            resultMap.insert({i, ((sumOfWeights.weight * 0.8) / tempData.size()) + (rand() % 5) * pow(-1,
-                                                                                                      rand())}); // *0.8 тк дата сет с obesity а норм люди меньше весят
+            resultMap.insert({i, (sumOfWeights.weight / tempData.size())});
         }
-        tempData.clear();
     }
-
     return resultMap;
 }
 
@@ -152,18 +149,22 @@ obesityMapOfMaps workWithObesity(const std::string &filePath) {
     if (!inputfile) {
         std::cout << "ПРОВЕРЬТЕ ФАЙЛ";
         obesityMapOfMaps map{{"Man",  {}},
-                             {"!Man", {}}};
+                             {"Female", {}}};
         return map;
     }
-
     std::string line;
     std::vector<personObesity> vectorWomen, vectorMen;
-
     while (std::getline(inputfile, line)) {
         std::stringstream ss(line);
         std::string oneCellFromFile;
         std::vector<std::string> tokens;
         personObesity exectPerson;
+//        std::getline(ss, oneCellFromFile, ',');
+//        exectPerson.sex = oneCellFromFile;
+//        std::getline(ss, oneCellFromFile, ',');
+//        exectPerson.age = std::stoul(oneCellFromFile);
+//        std::getline(ss, oneCellFromFile, ',');
+//        exectPerson.weight = std::stod(oneCellFromFile);
         for (size_t i = 0; i < 4; ++i) {
             std::getline(ss, oneCellFromFile, ',');
             try {
@@ -171,32 +172,40 @@ obesityMapOfMaps workWithObesity(const std::string &filePath) {
                     exectPerson.sex = oneCellFromFile;
                 } else if (i == 1) {
                     exectPerson.age = std::stoul(oneCellFromFile);
-                } else if (i == 2) {
+                } else if (i == 3) {
                     exectPerson.weight = std::stod(oneCellFromFile);
                 }
             }
             catch (...) {}
         }
 
-        if (exectPerson.sex == "!Man")
+        if (exectPerson.sex == "Female")
             vectorWomen.push_back(exectPerson);
         else
             vectorMen.push_back(exectPerson);
     }
-
     std::map<size_t, double> tempMapMan = processObesityData(vectorMen);
     std::map<size_t, double> tempMapWomen = processObesityData(vectorWomen);
-
     obesityMapOfMaps map{{"Man",  tempMapMan},
-                         {"!Man", tempMapWomen}};
-    for (auto x: map) {
-        for (auto y: x.second) {
+                         {"Female", tempMapWomen}};
+
+
+    for (const auto &x: map) {
+        for (const auto &y: x.second) {
             std::cout << y.first << ':' << y.second << std::endl;
         }
-
         std::cout << '\n';
     }
     return map;
+}
+
+double genRand(double weight) {
+//    10 -> 20 max weight
+//    10 -> 5 min weight
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(-weight*0.5, weight);
+    return weight + dist(mt);
 }
 
 void phillWeights(matrix &matrix, const obesityMapOfMaps &map) {
@@ -204,17 +213,38 @@ void phillWeights(matrix &matrix, const obesityMapOfMaps &map) {
     for (size_t i = 1; i < matrix.size(); i++) {
         try {
             size_t age = std::stoi(matrix[i][COLUMNS::Age]);
-            std::string sex = (matrix[i][COLUMNS::Sex] == "male" ? "Man" : "!Man");
-            std::map<std::string, std::map<size_t, double>>::const_iterator it = map.find(sex);
+            std::string sex = (matrix[i][COLUMNS::Sex] == "male" ? "Man" : "Female");
+//            std::map<std::string, std::map<size_t, double>>::const_iterator it = map.find(sex);
+//            if (it != map.end()) {
+//                const auto &ageMap = it->second;
+//                auto it2 = ageMap.find(age);
+//                if (it2 != ageMap.end()) {
+//                    double weight = it2->second;
+//                    matrix[i].push_back(std::to_string(weight));
+//                }
+//            }
+            std::map<size_t, double> ageWeight = map.at(sex);
 
-            if (it != map.end()) {
-                const auto &ageMap = it->second;
-                auto it2 = ageMap.find(age);
-                if (it2 != ageMap.end()) {
-                    double weight = it2->second;
-                    matrix[i].push_back(std::to_string(weight));
-                }
+            std::map<size_t, double>::const_iterator ageWeightLower = ageWeight.lower_bound(age);
+            double ageWeightVar = ageWeightLower->second;
+            if (ageWeightLower == ageWeight.end()){
+                ageWeightVar = (--ageWeight.upper_bound(age))->second;
+
             }
+            matrix[i].push_back(std::to_string(genRand(ageWeightVar)));
+
         } catch (...) {}
     }
+}
+//template <class T>
+//std::vector<T>
+
+std::vector<int64_t> getCol(matrix &matrix, int col){
+    std::vector<int64_t> newColVector;
+    for (size_t i = 1; i < matrix.size(); i++) {
+
+        std::cout << "done = "<<matrix[i][col] <<i <<"=i ; col = "<<col <<" - "<<(i==COLUMNS::Value?  std::stod(matrix[i][col])*100: std::stod(matrix[i][col]));
+        newColVector.push_back(static_cast<int>(i==COLUMNS::Value?  std::stod(matrix[i][col])*100: std::stod(matrix[i][col])));
+    }
+    return newColVector;
 }

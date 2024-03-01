@@ -4,12 +4,11 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <random>
 #include <string>
 #include <vector>
-
-#include <map>
+#include <unordered_map>
 #include <fstream>
-#include <iostream>
 #include <sstream>
 #include <algorithm>
 #include <cstdint>
@@ -17,7 +16,7 @@
 #include <numeric>
 
 enum COLUMNS {
-    PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked, Value
+    PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked, Value, Weight
 };
 
 struct Passenger {
@@ -33,7 +32,7 @@ struct Passenger {
 
 typedef std::vector<std::vector<std::string>> matrix;
 // новый тип данных
-typedef std::map<std::string, std::map<size_t, double>> obesityMapOfMaps;
+typedef std::unordered_map<std::string, std::map<size_t, double>> obesityMapOfMaps;
 typedef std::vector<std::vector<Passenger>> boats;
 
 matrix getMatrix(const std::string &);
@@ -63,6 +62,8 @@ struct personObesity {
 };
 
 void phillWeights(matrix &matrix, const obesityMapOfMaps &map);
+
+std::vector<int64_t> getCol(matrix &matrix, int col);
 
 #endif //TITANIC_CPP_TITANIC_H
 

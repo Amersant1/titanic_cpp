@@ -11,10 +11,11 @@ int main() {
         fillNan(needed_matrix, i);
     }
     fillValue(needed_matrix);
-    //printMatrix(needed_matrix);
     getBoats(needed_matrix);
     obesityMapOfMaps map = workWithObesity("../data/obesity.csv");
     std::cout << "DONE with workWithObesity\n";
     phillWeights(needed_matrix, map);
+    printMatrix(needed_matrix);
+    getCol(needed_matrix, COLUMNS::Weight);
     return 0;
 }
