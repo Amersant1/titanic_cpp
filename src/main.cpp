@@ -1,5 +1,5 @@
 #include "titanic.h"
-
+#include "ortool.h"
 std::string PATH = "../data/tit_csv.txt";
 
 
@@ -15,6 +15,7 @@ int main() {
     obesityMapOfMaps map = workWithObesity("../data/obesity.csv");
     phillWeights(needed_matrix, map);
     printMatrix(needed_matrix);
-    getCol(needed_matrix, COLUMNS::Weight);
+//    getCol(needed_matrix, COLUMNS::Weight);
+    operations_research::RunKnapsackExample(needed_matrix);
     return 0;
 }

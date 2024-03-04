@@ -221,7 +221,7 @@ void phillWeights(matrix &matrix, const obesityMapOfMaps &map) {
 //            }
             std::map<size_t, double> ageWeight = map.at(sex);
 
-            std::map<size_t, double>::const_iterator ageWeightLower = ageWeight.lower_bound(age);
+            auto ageWeightLower = ageWeight.lower_bound(age);
             double ageWeightVar = ageWeightLower->second;
             if (ageWeightLower == ageWeight.end()) {
                 ageWeightVar = (--ageWeight.upper_bound(age))->second;
@@ -241,11 +241,9 @@ std::vector<int64_t> getCol(matrix &matrix, int col) {
 
         if (matrix[i][col].empty())
             newColVector.push_back(0);
-        else{
-//            std::cout << "done = " << matrix[i][0] << "; " << i << "=i ; col = " << col << " - "
-//                      << (i == COLUMNS::Value ? std::stod(matrix[i][col]) * 100 : std::stod(matrix[i][col])) << '\n';
+        else {
             newColVector.push_back(
-                    static_cast<int>(i == COLUMNS::Value ? std::stod(matrix[i][col]) * 100 : std::stod(
+                    static_cast<int>(col == COLUMNS::Value ? std::stod(matrix[i][col]) * 100 : std::stod(
                             matrix[i][col])));
         }
 

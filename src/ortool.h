@@ -9,9 +9,8 @@ namespace operations_research {
         KnapsackSolver solver(
                 KnapsackSolver::KNAPSACK_MULTIDIMENSION_BRANCH_AND_BOUND_SOLVER,
                 "KnapsackExample");
-        std::vector<int64_t> ortoolsValues = getCol(matrix, COLUMNS::Value);
 
-        std::vector<int64_t> values = ortoolsValues;
+        std::vector<int64_t> values = getCol(matrix, COLUMNS::Value);
 
         std::vector<std::vector<int64_t>> weights = {getCol(matrix, COLUMNS::Weight)};
 

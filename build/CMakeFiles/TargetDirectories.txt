@@ -1,3 +1,0 @@
-/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles/titanic.dir
-/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles/edit_cache.dir
-/Users/nikitapodlednev/Desktop/titanic_cpp/build/CMakeFiles/rebuild_cache.dir

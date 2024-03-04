@@ -26,7 +26,6 @@ struct Passenger {
     std::string sex;
     size_t pClass;
     double value;
-
     void philValue();
 };
 
